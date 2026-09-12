@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我可以洗衣服嗎？</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 核心剪裁邏輯 (Clipping & Focus) */
+    .circle-container {
+      position: relative;
+      width: 280px; 
+      height: 280px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 3px solid #e2e8f0;
+      background-color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .circle-container iframe {
+      position: absolute;
+      width: 375px; 
+      height: 667px;
+      border: none;
+      left: -48px;
+      top: -155px;
+    }
+    
+    .card-label {
+      font-weight: 600;
+      color: #475569;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 min-h-screen p-4 md:p-6">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- 頁頭與切換按鈕區 -->
+    <header class="mb-8 bg-white p-6 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-800">我可以洗衣服嗎？</h1>
+        <p class="text-slate-500 text-sm mt-1">行雲一莊洗烘衣機狀態查詢</p>
+		<p class="text-slate-500 text-sm mt-1">※依現場顯示資訊為準。</p>
+      </div>
+
+      <!-- 樓層切換按鈕群 -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="switchFloor('all')" id="btn-all" class="floor-btn bg-blue-600 text-white px-4 py-2 rounded-xl font-bold shadow-sm transition hover:opacity-90">全部樓層</button>
+        <button onclick="switchFloor('1')" id="btn-1" class="floor-btn bg-slate-100 text-slate-600 px-4 py-2 rounded-xl font-bold hover:bg-slate-200 transition">1F</button>
+        <button onclick="switchFloor('2')" id="btn-2" class="floor-btn bg-slate-100 text-slate-600 px-4 py-2 rounded-xl font-bold hover:bg-slate-200 transition">2F</button>
+        <button onclick="switchFloor('3')" id="btn-3" class="floor-btn bg-slate-100 text-slate-600 px-4 py-2 rounded-xl font-bold hover:bg-slate-200 transition">3F</button>
+        <button onclick="switchFloor('4')" id="btn-4" class="floor-btn bg-slate-100 text-slate-600 px-4 py-2 rounded-xl font-bold hover:bg-slate-200 transition">4F</button>
+      </div>
+    </header>
+
+    <!-- 樓層展示區域 -->
+    <div id="floors-wrapper" class="space-y-8">
+      
+      <!-- 1F 行 -->
+      <section id="floor-1" class="floor-section bg-white p-6 rounded-2xl shadow-sm" data-floor="1">
+        <h2 class="text-xl font-bold text-slate-700 mb-6 flex items-center">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-lg text-sm flex items-center justify-center mr-2">1F</span>
+            1 樓機器狀態
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center">
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b36a/" scrolling="no"></iframe></div>
+                <div class="card-label">洗1</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b334/" scrolling="no"></iframe></div>
+                <div class="card-label">洗2</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b33e/" scrolling="no"></iframe></div>
+                <div class="card-label">洗3</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b373/" scrolling="no"></iframe></div>
+                <div class="card-label">烘1</div>
+            </div>
+        </div>
+      </section>
+
+      <!-- 2F 行 -->
+      <section id="floor-2" class="floor-section bg-white p-6 rounded-2xl shadow-sm" data-floor="2">
+        <h2 class="text-xl font-bold text-slate-700 mb-6 flex items-center">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-lg text-sm flex items-center justify-center mr-2">2F</span>
+            2 樓機器狀態
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center">
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b36a/" scrolling="no"></iframe></div>
+                <div class="card-label">洗1</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b334/" scrolling="no"></iframe></div>
+                <div class="card-label">洗2</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b33e/" scrolling="no"></iframe></div>
+                <div class="card-label">洗3</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b329/" scrolling="no"></iframe></div>
+                <div class="card-label">烘1</div>
+            </div>
+        </div>
+      </section>
+
+      <!-- 3F 行 -->
+      <section id="floor-3" class="floor-section bg-white p-6 rounded-2xl shadow-sm" data-floor="3">
+        <h2 class="text-xl font-bold text-slate-700 mb-6 flex items-center">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-lg text-sm flex items-center justify-center mr-2">3F</span>
+            3 樓機器狀態
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center">
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b336/" scrolling="no"></iframe></div>
+                <div class="card-label">洗1</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b32a/" scrolling="no"></iframe></div>
+                <div class="card-label">洗2</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b2ef/" scrolling="no"></iframe></div>
+                <div class="card-label">洗3</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b32c/" scrolling="no"></iframe></div>
+                <div class="card-label">烘1</div>
+            </div>
+        </div>
+      </section>
+
+      <!-- 4F 行 -->
+      <section id="floor-4" class="floor-section bg-white p-6 rounded-2xl shadow-sm" data-floor="4">
+        <h2 class="text-xl font-bold text-slate-700 mb-6 flex items-center">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-lg text-sm flex items-center justify-center mr-2">4F</span>
+            4 樓機器狀態
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center">
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b32d/ scrolling="no"></iframe></div>
+                <div class="card-label">洗1</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b2f7/" scrolling="no"></iframe></div>
+                <div class="card-label">洗2</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b2ed/" scrolling="no"></iframe></div>
+                <div class="card-label">洗3</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="circle-container"><iframe src="https://wipepay.com.tw/v1/linepay-yoyopay/94c96001b338/" scrolling="no"></iframe></div>
+                <div class="card-label">烘1</div>
+            </div>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+
+  <!-- JavaScript 切換邏輯 -->
+  <script>
+    function switchFloor(targetFloor) {
+      // 1. 控制樓層區塊的顯示與隱藏
+      const sections = document.querySelectorAll('.floor-section');
+      sections.forEach(section => {
+        if (targetFloor === 'all' || section.dataset.floor === targetFloor) {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+
+      // 2. 更新按鈕高亮樣式
+      const buttons = document.querySelectorAll('.floor-btn');
+      buttons.forEach(btn => {
+        btn.className = 'floor-btn bg-slate-100 text-slate-600 px-4 py-2 rounded-xl font-bold hover:bg-slate-200 transition';
+      });
+
+      const activeBtn = document.getElementById(`btn-${targetFloor}`);
+      if (activeBtn) {
+        activeBtn.className = 'floor-btn bg-blue-600 text-white px-4 py-2 rounded-xl font-bold shadow-sm transition hover:opacity-90';
+      }
+    }
+  </script>
+</body>
+</html>
